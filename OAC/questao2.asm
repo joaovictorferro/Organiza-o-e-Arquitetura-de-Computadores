@@ -1,47 +1,27 @@
-.data
-	Resultado: .asciiz "Resultado da questao: "
-	Numero1: .asciiz "Digite o numero 1: "
-	Numero2: .asciiz "Digite o numero 2: "
-.text
-	# ler os numeros 1 e 2
-	li $v0,4
-	la $a0,Numero1
-	syscall
-	
-	li $v0,5
-	syscall 
-	
-	move $t0,$v0
+addi $s0,$zero,0 #inicializar a variavel a
+addi $s1,$zero,0 #inicializar a variavel b
 
-	li $v0,4
-	la $a0,Numero2
-	syscall
+sgt $t0,$zero,$s0 #se zero for maior que a
+bne $t0,$zero,Elseif #caso zero seja maior que a entra na label Elseif
+slt $t1,$s0,$s1 #a menor que b
+beq $t1,$zero,Elseif # caso a seja maior que b, entao entra na label Elseif
+addi $s2,$zero,1 #variavel x recebe 1
+j Exit #acabou
+
+Elseif:
+	slt $t0,$s0,$zero #a e menor que zero
+	beq $t0,$zero,Else # caso a seja maior que zero entao entra na label Else
+	sgt $t1,$s0,$s1 #a maior que b
+	beq $t0,$zero,Else # se a menor que b entra na label Else
+	addi $s2,$zero,2 #variavel x recebe 2
+	j Exit #acabou
 	
-	li $v0,5
-	syscall 
-	
-	move $t1,$v0
-	# Logica do programa comeca aqui:
-	
-	addi $a1,$zero,0 # variavel X recebe zero
-	
-	beq $t0,$zero,Menor #se A == zero
-	
-	Menor: slt $t3,$t0,$t1 #se a < b
-		bne  $t3,$zero,Else
-		j Exit
-		Else: addi $a1,$zero,1
-		j Exit
-	If2:
-	
-	
-	
-	Exit:...
-	#mostra o resultado
-	li $v0,4
-	la $a0,Resultado
-	syscall
-	
-	li $v0,1
-	move $a0,$a1
-	syscall
+Else:
+	addi $s2,$zero,3 #variavel x recebe 3
+
+Exit: 
+
+#mostra o resultado
+li $v0,1
+move $a0,$s2
+syscall
