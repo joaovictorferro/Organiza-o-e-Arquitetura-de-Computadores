@@ -21,6 +21,7 @@
 	syscall 
 	
 	move $t1,$v0
+	# Logica do programa comeca aqui:
 	
 	addi $a1,$zero,0 # variavel X recebe zero
 	
