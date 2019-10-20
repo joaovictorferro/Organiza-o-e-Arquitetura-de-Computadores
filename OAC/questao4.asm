@@ -14,8 +14,3 @@ L1:
 	bne $v1,$zero,Exit
 
 Exit:
-
-#mostra o resultado
-li $v0,1
-move $a0,$s2
-syscall
