@@ -1,7 +1,3 @@
-.data
-Resultado: .asciiz "Resultado da questao: "
-
-.text
 #declarei as variaveis
 addi $a1,$zero,2
 addi $a2,$zero,1
@@ -16,12 +12,5 @@ beq  $zero,$t0,Else # se for zero continua, se nao vai para label (Else)
 add $a3,$zero,$a2 #B recebe M
 j Exit
 Else: add $a3,$zero,$zero
-Exit:...
 
-li $v0,4
-la $a0,Resultado
-syscall
-
-li $v0,1
-move $a0,$a3
-syscall
+Exit:
