@@ -20,7 +20,7 @@ L1:
 	lw $a2, 0($sp) 			# restaura n original
 	lw $ra, 4($sp) 			# e endereço de retorno
 	addi $sp, $sp, 8 		# pop 2 itens da pilha
-	add $v1, $a1, $v1 		# multiplica p/ obter resultado
+	add $v1, $a1, $v1 		# soma para obeter o resultado
 	jr $ra
 
 Exit: 		
