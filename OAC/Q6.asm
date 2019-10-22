@@ -1,5 +1,5 @@
 addi $a1,$zero,6
-jal fib     #calcular fib (n)
+jal fib 
 j Exit
 
 fib:
